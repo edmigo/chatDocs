@@ -7,6 +7,7 @@ const textBox = document.createElement("TextBoxInsertQuestion");
 const AnswerShow = document.createElement("TextBoxShowAnswer");
 const SendButton = document.querySelector('#SendButton');
 
+ServerAdd = 'https://86b3-194-163-191-105.ngrok-free.app -> http://localhost:80'
 //textBox.setAttribute("type", "text");
 document.body.appendChild(textBox);
 
