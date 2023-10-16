@@ -7,7 +7,8 @@ const textBox = document.createElement("TextBoxInsertQuestion");
 const AnswerShow = document.createElement("TextBoxShowAnswer");
 const SendButton = document.querySelector('#SendButton');
 
-ServerAdd = 'https://86b3-194-163-191-105.ngrok-free.app -> http://localhost:80'
+ServerAddress = 'https://86b3-194-163-191-105.ngrok-free.app'
+
 //textBox.setAttribute("type", "text");
 document.body.appendChild(textBox);
 
@@ -25,7 +26,8 @@ function handleSendButton() {
   ShowAnswer.value = 'Please wait few seconds, embedding your question...'
 
   // Send the file data to the Streamlit backend
-  fetch('http://localhost:8888/question', {
+  //fetch('http://localhost:8888/question', {
+  fetch(ServerAddress + '/question', {
     method: 'POST',
     body: formData
     //body: formData
@@ -54,7 +56,8 @@ function handleFileUpload() {
   formData.append('file', file);
 
   // Send the file data to the Streamlit backend
-  fetch('http://localhost:8888/upload', {
+  //fetch('http://localhost:8888/upload', {
+  fetch(ServerAddress + '/upload', {
     method: 'POST',
     body: formData
   })
