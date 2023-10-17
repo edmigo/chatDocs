@@ -20,6 +20,41 @@ fileInput.addEventListener('click', handleChooseFileForUpload);
 loadButton.addEventListener('click', handleFileUpload);
 SendButton.addEventListener('click', handleSendButton);
 
+var ShowAnswer = document.getElementById("TextBoxShowAnswer")
+
+let intervalID = setInterval(() => {
+ if (ShowAnswer.value == MsgWaitForAnswer){
+     if ((SendButton.textContent == 'Send') || (SendButton.textContent == 'Sending')){
+        SendButton.textContent = 'Sending.';
+     }
+     else if (SendButton.textContent == 'Sending.'){
+        SendButton.textContent = 'Sending..';
+     }
+     else if (SendButton.textContent == 'Sending..'){
+        SendButton.textContent = 'Sending...';
+     }
+     else if (SendButton.textContent == 'Sending...'){
+        SendButton.textContent = 'Sending';
+     }
+ }
+ else{
+    SendButton.textContent = 'Send';
+ }
+
+ if (loadButton.textContent == 'Uploading'){
+    loadButton.textContent = 'Uploading.';
+ }
+ else if(loadButton.textContent == 'Uploading.'){
+    loadButton.textContent = 'Uploading..';
+ }
+ else if(loadButton.textContent == 'Uploading..'){
+    loadButton.textContent = 'Uploading...';
+ }
+ else if(loadButton.textContent == 'Uploading...'){
+    loadButton.textContent = 'Uploading';
+ }
+}, 1000);
+
 function handleChooseFileForUpload(){
     loadButton.textContent = 'Load';
 }
@@ -28,7 +63,7 @@ function handleSendButton() {
 // Create a FormData object
   const formData = new FormData();
   var text = document.getElementById("TextBoxInsertQuestion").value
-  var ShowAnswer = document.getElementById("TextBoxShowAnswer")
+  //var ShowAnswer = document.getElementById("TextBoxShowAnswer")
 
   formData.append('text', text);
   if (ShowAnswer.value != MsgWaitForAnswer){
@@ -60,28 +95,34 @@ function handleSendButton() {
 function handleFileUpload() {
   const file = fileInput.files[0];
 
-  // Create a FormData object
-  const formData = new FormData();
-  formData.append('file', file);
+  //var ShowAnswer = document.getElementById("TextBoxShowAnswer")
 
-  loadButton.textContent = 'Uploading...';
-  
-  // Send the file data to the Streamlit backend
-  //fetch('http://localhost:8888/upload', {
-  fetch(ServerAddress + '/upload', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-    // Process and display the response data
-    console.log(data);
-    // Update the UI with the processed results
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    // Handle error scenarios
-  });
-  
-  loadButton.textContent = 'Finished uploading.';
+  loadButton.textContent = 'Uploading';
+
+  if (ShowAnswer.value != MsgWaitForAnswer){
+      // Create a FormData object
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Send the file data to the Streamlit backend
+      //fetch('http://localhost:8888/upload', {
+      fetch(ServerAddress + '/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Process and display the response data
+        console.log(data);
+        loadButton.textContent = 'Finished uploading.';
+        // Update the UI with the processed results
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        loadButton.textContent = 'Finished uploading.';
+        // Handle error scenarios
+      });
+  }
+  else{
+  }
 }
