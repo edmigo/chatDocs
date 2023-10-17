@@ -7,8 +7,8 @@ const textBox = document.createElement("TextBoxInsertQuestion");
 const AnswerShow = document.createElement("TextBoxShowAnswer");
 const SendButton = document.querySelector('#SendButton');
 
-//ServerAddress = 'https://86b3-194-163-191-105.ngrok-free.app'
-ServerAddress = 'https://cbcd-77-137-75-12.ngrok.io'
+ServerAddress = 'https://86b3-194-163-191-105.ngrok-free.app'
+//ServerAddress = 'https://cbcd-77-137-75-12.ngrok.io'
 
 //textBox.setAttribute("type", "text");
 document.body.appendChild(textBox);
