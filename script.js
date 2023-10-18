@@ -110,16 +110,22 @@ function handleFileUpload() {
         method: 'POST',
         body: formData
       })
-      .then(response => response.json())
+      //.then(response => response.json())
+      .then(response => response.text())
       .then(data => {
         // Process and display the response data
         console.log(data);
-        loadButton.textContent = 'Finished uploading.';
+        if (data == 'TRUE'){
+            loadButton.textContent = 'The file upload was successful.';
+        }
+        else{
+            loadButton.textContent = 'File upload failed.';
+        }
         // Update the UI with the processed results
       })
       .catch(error => {
         console.error('Error:', error);
-        loadButton.textContent = 'Finished uploading.';
+        loadButton.textContent = 'File upload failed.';
         // Handle error scenarios
       });
   }
