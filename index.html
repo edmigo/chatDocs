@@ -5,33 +5,33 @@
   <title>chatDocs</title>
 </head>
 <body style="background-color:#E7F3F7; margin: center; width: 1024px;">
-  <label style="font-size:22px; for="MainText">Chat with documents.</label>
-  <br>
-  <label style="font-size:22px; for="MainText1">Get instant answers with cited sources.</label>
-  <br>
-  <br>
-  <label style="font-size:18px; for="MainText2">ChatDOC is a ChatGPT-based file-reading assistant that can quickly extract,</label>
-  <br>
-  <label style="font-size:18px; for="MainText3">locate, and summarize information from documents (.pdf, .doc, .docx scanned file).</label>
-  <br>
-  <br>
-  <input type="file" id="fileInput">
-  <button style="border-radius: 6px; padding: 15px; border: 1px solid black; background-color:#5ACAF1; border-color:red; color:black" id="loadButton">Load</button>
-  <br>
-  <br>
-  <label for="TextBoxInsertQuestion">Type your question here:</label>
-  <br>
-  <br>
-  <textarea style="border-radius: 6px; background-color:#EEEDE9; border-color:blue; color:black" name="promt" id="TextBoxInsertQuestion" rows="5" cols="60" placeholder="Type your question here..."></textarea>
-  <br>
-  <br>
-  <button style="border-radius: 6px; padding: 15px; border: 1px solid black; background-color:#12EC12; border-color:red; color:black" id="SendButton">Send</button>
-  <br>
-  <br>
-  <label for="TextBoxShowAnswer">Answer:</label>
-  <br>
-  <br>
-  <textarea style="border-radius: 6px; background-color:#EEEDE9; border-color:blue; color:black" name="promt" id="TextBoxShowAnswer" rows="15" cols="60" placeholder="waiting for answer"></textarea>
-  <script src="script.js"></script>
+  <div class="container">
+    <label style="font-size:28px; for="MainText">Chat with documents.</label>
+    <br>
+    <label style="font-size:28px; for="MainText1">Get instant answers with cited sources.</label>
+    <br>
+    <br>
+    <label style="font-size:22px; for="MainText2">ChatDOC is a ChatGPT-based file-reading assistant that can quickly extract,</label>
+    <br>
+    <label style="font-size:22px; for="MainText3">locate, and summarize information from documents (.pdf, .doc, .docx scanned file).</label>
+    <br>
+    <br>
+    <input style="font-size:22px;" type="file" id="fileInput">
+    <button style="font-size:22px; border-radius: 20px; padding: 15px; border: 2px solid black; background-color:#5ACAF1; border-color:red; color:black" id="loadButton">Load</button>
+    <br>
+    <br>
+    <label style="font-size:22px;" for="TextBoxInsertQuestion">Enter your question here:</label>
+    <br>
+    <textarea style="font-size:22px; border-radius: 6px; background-color:#EEEDE9; border-color:blue; color:black" name="promt" id="TextBoxInsertQuestion" rows="5" cols="60" placeholder="Type your question here..."></textarea>
+    <br>
+    <br>
+    <button style="font-size:22px; border-radius: 20px; padding: 15px; border: 1px solid black; background-color:#12EC12; border-color:red; color:black" id="SendButton">Send</button>
+    <br>
+    <br>
+    <label style="font-size:22px;" for="TextBoxShowAnswer">Here will be the answer:</label>
+    <br>
+    <textarea style="font-size:22px; border-radius: 6px; background-color:#EEEDE9; border-color:blue; color:black" name="promt" id="TextBoxShowAnswer" rows="15" cols="60" placeholder="Here will be your answer to your question"></textarea>
+    <script src="script.js"></script>
+  </div>
 </body>
 </html>
