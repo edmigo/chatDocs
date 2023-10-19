@@ -1,6 +1,4 @@
 # chatDocs
-Extract and Summarize info from your documents with this ChatDOC.
-Chat with documents.
-Get instant answers with cited sources.
-ChatDOC is a ChatGPT-based file-reading assistant that can quickly extract, 
-locate, and summarize information from documents (.pdf, .doc, .docx).
+Engage in a seamless conversation with your documents and get immediate answers with verified sources.
+
+ChatDOC is an AI-powered file-reading assistant that can help you extract, locate, and summarize information from documents in a jiffy. It supports various file formats such as PDF, DOC, DOCX, and even scanned files. With ChatDOC, you can chat with your documents and get instant answers with cited sources. Powered by ChatGPT, a state-of-the-art natural language processing model, ChatDOC is your go-to assistant for all your document-related queries.
