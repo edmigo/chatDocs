@@ -24,17 +24,17 @@ var ShowAnswer = document.getElementById("TextBoxShowAnswer")
 
 let intervalID = setInterval(() => {
  if (ShowAnswer.value == MsgWaitForAnswer){
-     if ((SendButton.textContent == 'Send') || (SendButton.textContent == 'Sending')){
-        SendButton.textContent = 'Sending.';
+     if ((SendButton.textContent == 'Send') || (SendButton.textContent == 'Processing')){
+        SendButton.textContent = 'Processing.';
      }
-     else if (SendButton.textContent == 'Sending.'){
-        SendButton.textContent = 'Sending..';
+     else if (SendButton.textContent == 'Processing.'){
+        SendButton.textContent = 'Processing..';
      }
-     else if (SendButton.textContent == 'Sending..'){
-        SendButton.textContent = 'Sending...';
+     else if (SendButton.textContent == 'Processing..'){
+        SendButton.textContent = 'Processing...';
      }
-     else if (SendButton.textContent == 'Sending...'){
-        SendButton.textContent = 'Sending';
+     else if (SendButton.textContent == 'Processing...'){
+        SendButton.textContent = 'Processing';
      }
  }
  else{
