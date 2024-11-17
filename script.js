@@ -1,134 +1,62 @@
-// for load web app goto the following link
-// file:///C:/Users/998823/PycharmProjects/chatGPT/SimpleLoadFile_01/index.html
-// HTML file input element
-const fileInput = document.querySelector('#fileInput');
-const loadButton = document.querySelector('#loadButton');
-const textBox = document.createElement("TextBoxInsertQuestion");
-const AnswerShow = document.createElement("TextBoxShowAnswer");
-const SendButton = document.querySelector('#SendButton');
-
-MsgWaitForAnswer = 'Please wait few seconds, embedding your question...'
-
-ServerAddress = 'https://014e-194-163-191-105.ngrok-free.app'
-//ServerAddress = 'https://cbcd-77-137-75-12.ngrok.io'
-
-//textBox.setAttribute("type", "text");
-document.body.appendChild(textBox);
-
-// Event listener for file selection
-fileInput.addEventListener('click', handleChooseFileForUpload);
-loadButton.addEventListener('click', handleFileUpload);
-SendButton.addEventListener('click', handleSendButton);
-
-var ShowAnswer = document.getElementById("TextBoxShowAnswer")
-
-let intervalID = setInterval(() => {
- if (ShowAnswer.value == MsgWaitForAnswer){
-     if ((SendButton.textContent == 'Send') || (SendButton.textContent == 'Processing')){
-        SendButton.textContent = 'Processing.';
-     }
-     else if (SendButton.textContent == 'Processing.'){
-        SendButton.textContent = 'Processing..';
-     }
-     else if (SendButton.textContent == 'Processing..'){
-        SendButton.textContent = 'Processing...';
-     }
-     else if (SendButton.textContent == 'Processing...'){
-        SendButton.textContent = 'Processing';
-     }
- }
- else{
-    SendButton.textContent = 'Send';
- }
-
- if (loadButton.textContent == 'Uploading'){
-    loadButton.textContent = 'Uploading.';
- }
- else if(loadButton.textContent == 'Uploading.'){
-    loadButton.textContent = 'Uploading..';
- }
- else if(loadButton.textContent == 'Uploading..'){
-    loadButton.textContent = 'Uploading...';
- }
- else if(loadButton.textContent == 'Uploading...'){
-    loadButton.textContent = 'Uploading';
- }
-}, 1000);
-
-function handleChooseFileForUpload(){
-    loadButton.textContent = 'Load';
+// Function to show content based on menu click
+function showHome() {
+    document.getElementById('output').textContent = '';  // Clear previous content
 }
 
-function handleSendButton() {
-// Create a FormData object
-  const formData = new FormData();
-  var text = document.getElementById("TextBoxInsertQuestion").value
-  //var ShowAnswer = document.getElementById("TextBoxShowAnswer")
-
-  formData.append('text', text);
-  if (ShowAnswer.value != MsgWaitForAnswer){
-      ShowAnswer.value = MsgWaitForAnswer
-
-      fetch(ServerAddress + '/question', {
-            method: 'POST',
-            body: formData
-      })
-      .then(response => response.text())
-      .then(response => {
-        // Process and display the response data
-        console.log(response);
-        ShowAnswer.value = response;
-        // Update the UI with the processed results
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        ShowAnswer.value = 'error: ' + error;
-        // Handle error scenarios
-      });
-  }
-  else{
-    ShowAnswer.value = MsgWaitForAnswer
-  }
+function showAbout() {
+    document.getElementById('output').textContent = 'About Fintuit: Fintuit provides clear and reliable financial insights for every investor. We aim to make complex financial data simple and actionable, helping investors make smarter decisions.';
 }
 
-// Function to handle file upload
-function handleFileUpload() {
-  const file = fileInput.files[0];
-
-  //var ShowAnswer = document.getElementById("TextBoxShowAnswer")
-
-  loadButton.textContent = 'Uploading';
-
-  if (ShowAnswer.value != MsgWaitForAnswer){
-      // Create a FormData object
-      const formData = new FormData();
-      formData.append('file', file);
-
-      // Send the file data to the Streamlit backend
-      //fetch('http://localhost:8888/upload', {
-      fetch(ServerAddress + '/upload', {
-        method: 'POST',
-        body: formData
-      })
-      //.then(response => response.json())
-      .then(response => response.text())
-      .then(data => {
-        // Process and display the response data
-        console.log(data);
-        if (data == 'TRUE'){
-            loadButton.textContent = 'The file upload was successful.';
-        }
-        else{
-            loadButton.textContent = 'File upload failed.';
-        }
-        // Update the UI with the processed results
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        loadButton.textContent = 'File upload failed.';
-        // Handle error scenarios
-      });
-  }
-  else{
-  }
+function showServices() {
+    document.getElementById('output').textContent = 'Our Services: We offer personalized investment advice, portfolio management, and detailed market analysis to help investors achieve their financial goals.';
 }
+
+function showContact() {
+    document.getElementById('output').textContent = 'Contact Us: You can reach us at contact@fintuit.com or call us at 123-456-7890.';
+}
+
+// Handle Search (from previous example)
+function handleSearch(event) {
+    event.preventDefault();
+    const searchText = document.getElementById('searchInput').value;
+    if (searchText.trim() !== "") {
+        const url = `http://194.163.191.105:8000/keepalive`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const outputContainer = document.getElementById('output');
+                outputContainer.textContent = `Search Results: ${JSON.stringify(data)}`;
+            })
+            .catch(error => {
+                console.error('Error during fetch request:', error);
+                const outputContainer = document.getElementById('output');
+                outputContainer.textContent = 'An error occurred. Please try again later.';
+            });
+    } else {
+        const outputContainer = document.getElementById('output');
+        outputContainer.textContent = 'Please enter a search term.';
+    }
+    document.getElementById('searchInput').value = "";  // Clear the search input
+}
+
+// Function to send GET request every 15 minutes (900,000 ms)
+function sendPeriodicRequest() {
+    const url = `http://194.163.191.105:8000/keepalive`;  // Replace with your actual endpoint
+    
+    fetch(url)
+        .then(response => response.json())  // Assuming the response is JSON
+        .then(data => {
+            console.log('Periodic data received:', data);
+            // Handle the periodic response data as needed
+        })
+        .catch(error => {
+            console.error('Error during periodic fetch request:', error);
+        });
+}
+
+// Send a GET request immediately when the page loads
+sendPeriodicRequest();  // Optional: send immediately when the page loads
+
+// Set an interval to send GET request every 15 minutes (900,000 milliseconds)
+setInterval(sendPeriodicRequest, 9000000);  // 15 minutes = 900,000 milliseconds

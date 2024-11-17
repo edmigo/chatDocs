@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage with Logo and Search</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#home" onclick="showHome()">Home</a></li>
+            <li><a href="#about" onclick="showAbout()">About</a></li>
+            <li><a href="#services" onclick="showServices()">Services</a></li>
+            <li><a href="#contact" onclick="showContact()">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Text -->
+    <div class="header-text">
+        Fintuit - Clear, Reliable Insights for Every Investor.
+    </div>
+
+    <div class="center-container">
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Search Input Form -->
+        <form class="search-form" onsubmit="return handleSearch(event)">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search..." autocomplete="off">
+        </form>
+
+        <!-- Display Content (This will change based on menu click) -->
+        <div id="output" class="output-container"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

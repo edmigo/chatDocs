@@ -1,0 +1,109 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Navigation Menu Styling */
+.navbar {
+    width: 100%;
+    background-color: #333;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.nav-list a:hover {
+    background-color: #4285f4;
+}
+
+/* Header Text Styling */
+.header-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1613e7;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Center container for the logo and search input */
+.center-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo styling */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Search Input Styling */
+.search-form {
+    display: inline-block;
+    width: 200%;
+    max-width: 1000px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #4285f4;
+}
+
+/* Output container for displayed text */
+.output-container {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
